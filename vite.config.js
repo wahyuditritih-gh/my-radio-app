@@ -5,5 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: './', // Menghindari error path saat dipublish di folder atau subdomain
+  server: {
+    host: true, // Agar bisa dibuka via IP Laptop di Browser HP
+  }
 })
 
