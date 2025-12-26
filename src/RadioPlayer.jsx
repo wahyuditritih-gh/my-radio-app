@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Howl } from 'howler';
 
 const STATIONS = [
-  { id: 1, name: 'Saluran Satu', url: 'http://cilacap.radioislam.my.id:11162/stream' },
-  { id: 2, name: 'Saluran Dua', url: 'http://cilacap.radioislam.my.id:11606/stream' }
+  { id: 1, name: 'Saluran 1', url: 'https://cilacap.radioislam.my.id:11162/stream' },
+  { id: 2, name: 'Saluran 2', url: 'https://cilacap.radioislam.my.id:11606/stream' }
 ];
 
 const RadioPlayer = () => {
