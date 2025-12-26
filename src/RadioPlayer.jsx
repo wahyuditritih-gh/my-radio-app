@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Howl } from 'howler';
 
 const STATIONS = [
-  { id: 1, name: 'Saluran Satu', url: 'https://cilacap.radioislam.my.id:11162/stream' },
-  { id: 2, name: 'Saluran Dua', url: 'https://cilacap.radioislam.my.id:11606/stream' }
+  { id: 1, name: 'Saluran Satu', url: 'http://cilacap.radioislam.my.id:11162/stream' },
+  { id: 2, name: 'Saluran Dua', url: 'http://cilacap.radioislam.my.id:11606/stream' }
 ];
 
 const RadioPlayer = () => {
@@ -27,7 +27,7 @@ const RadioPlayer = () => {
     player.current = new Howl({
       src: [station.url],
       html5: true, // WAJIB untuk HE-AAC stream agar tidak putus di background
-      format: ['aac', 'mp3'],
+      format: ['aac'],
       onload: () => {
         setIsLoading(false);
         player.current.play();
@@ -37,7 +37,7 @@ const RadioPlayer = () => {
       onloaderror: (id, err) => {
         console.error("Gagal memuat audio:", err);
         setIsLoading(false);
-        alert("Gagal memuat saluran. Periksa koneksi internet Anda.");
+        alert("Gagal memuat saluran. Mungkin server sedang offline atau periksa koneksi internet Anda.");
       }
     });
   };
