@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Howl } from 'howler';
 
 const STATIONS = [
-  { id: 1, name: 'Saluran 1', url: 'https://cilacap.radioislam.my.id:11162/stream' },
-  { id: 2, name: 'Saluran 2', url: 'https://cilacap.radioislam.my.id:11606/stream' }
+  { id: 1, name: 'Saluran 1', url: '/stream-satu' },
+  { id: 2, name: 'Saluran 2', url: '/stream-dua' }
 ];
 
 const RadioPlayer = () => {
@@ -23,6 +23,31 @@ const RadioPlayer = () => {
   const playRadio = (station) => {
     stopPlayer();
     setIsLoading(true);
+
+    player.current = new Howl({
+      src: [station.url],
+      html5: true,
+      format: ['aac'],
+      onloaderror: (id, err) => {
+       console.error("Load Error:", err);
+       setIsLoading(false);
+      },
+    onplayerror: (id, err) => {
+      console.error("Play Error:", err);
+    // Jika gagal play, coba paksa lewat HTML5 element langsung
+      player.current.once('unlock', () => {
+      player.current.play();
+    });
+  }
+});
+
+    player.current = new Howl({
+      src: [station.url],
+      html5: true,
+      format: ['aac'],
+      pool: 5, // Tambahkan ini untuk manajemen memori di mobile
+      html5PoolSize: 10 // Menambah jatah buffer HTML5 di HP
+    });
 
     player.current = new Howl({
       src: [station.url],
