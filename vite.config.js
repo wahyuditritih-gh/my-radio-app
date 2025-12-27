@@ -11,12 +11,12 @@ proxy: {
       // Saat di lokal, setiap request ke /stream-cilacap 
       // akan diteruskan ke server radio asli
       '/stream-satu': {
-        target: 'https://cilacap.radioislam.my.id:11162',
+        target: 'http://cilacap.radioislam.my.id:11162',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/stream-satu/, '/stream'),
       },
       '/stream-dua': {
-        target: 'https://cilacap.radioislam.my.id:11606',
+        target: 'http://cilacap.radioislam.my.id:11606',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/stream-dua/, '/stream'),
       },
