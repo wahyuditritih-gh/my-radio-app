@@ -1,0 +1,10 @@
+/radio-satu  http://cilacap.radioislam.my.id:11162/stream  200!
+/radio-dua   http://cilacap.radioislam.my.id:11606/stream  200!
+
+/radio-satu
+  Access-Control-Allow-Origin: *
+  Cache-Control: no-cache
+
+/radio-dua
+  Access-Control-Allow-Origin: *
+  Cache-Control: no-cache
